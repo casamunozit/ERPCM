@@ -22,14 +22,9 @@
     'price': 100.00,
     'currency': 'USD',
     'license': 'GPL-3',
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/module/module_data.xml
-    # for the full list
     'category': 'Contabilidad',
     'version': '1.2',
-    # any module necessary for this one to work correctly
     'depends': ['base', 'l10n_sv', 'account', 'product'],
-    # always loaded
     'data': [
         'views/account_journal.xml',
         'views/posicion_arancel_view.xml',
@@ -37,6 +32,7 @@
         'views/account_move_view.xml',
         'views/account_tax.xml',
         'data/journal_data.xml',
+        'data/tax_data.xml',
         'report/report_invoice_anu.xml',
         'report/report_invoice_ccf.xml',
         'report/report_invoice_fcf.xml',
@@ -48,9 +44,7 @@
         'security/ir.model.access.csv',
         'wizard/account_move_reversal.xml',
     ],
-    # only loaded in demonstration mode
     'demo': [],
-    #'demo.xml',
     'installable': True,
     'application': False,
     'auto_install': False,

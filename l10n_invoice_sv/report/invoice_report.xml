@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <report 
-            id="account.account_invoices"
+            id="l10n_invoice_sv.report_consumidor_final"
             model="account.move"
             string="Consumidor Final"
             report_type="qweb-pdf"
@@ -24,7 +24,7 @@
 	      <field name="dpi">160</field>
 		</record>
 
-        <record id="account.account_invoices" model="ir.actions.report">
+        <record id="l10n_invoice_sv.report_consumidor_final" model="ir.actions.report">
             <field name="print_report_name">(object.state in ('open','paid') and (object.journal_id.code) +(object.number or '').replace('/','')+'.pdf')
             </field>
             <field name="paperformat_id" ref="paperformat_invoice_fcf"/>

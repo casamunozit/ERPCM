@@ -276,6 +276,9 @@
             <field name="property_stock_account_input_categ_id" ref="inventario_liquidar"/>
             <field name="property_stock_account_output_categ_id" ref="inventario_liquidar"/>
             <field name="property_stock_valuation_account_id" ref="inventario"/>
+            <field name="income_currency_exchange_account_id" ref="ingresos"/>
+            <field name="expense_currency_exchange_account_id" ref="costos"/>
+            <field name="default_pos_receivable_account_id" ref="cobrar"/>
         </record>
 
     </data>
