@@ -16,5 +16,6 @@ class AccountTax(models.Model):
             ('importacionE','Importaciones Exentas'),
             ('importacionG','Importaciones Gravadas'),
             ('excluidos','Excluidos'),
+            ('na', 'No Aplica'),
         ], string="Tipo de Impuesto", index=True, default=False)
 

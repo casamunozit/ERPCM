@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 {
     'name': "Localizacion de El Salvador",
     'summary': """Localizacion de El Salvador""",
@@ -48,6 +48,9 @@
         'data/account_fiscal_position.xml',
         'data/account_fiscal_position_tax.xml',
         'data/account_chart_template_data.xml',
+        'data/res_country_data.xml',
+        'views/account_type.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
