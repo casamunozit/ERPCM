@@ -135,6 +135,22 @@ models.Order = models.Order.extend({
         }
         return _super.prototype.get_available_rewards.apply(this, arguments);
     },
+    set_client: function(client){
+        if (client && this.pos.config.vip_prod_id){
+            var self = this;
+            var vip_prod = _.find(this.orderlines.models, function(ol){ return ol.product.id == self.pos.config.vip_prod_id[0]});
+            if (vip_prod && !client.is_vip_customer){
+                rpc.query({
+                    model: 'res.partner',
+                    method: 'set_vip_customer',
+                    args: [client.id, this.pos.config.vip_pricelist_id[0]],
+                }).then(function(partner_is_customer){
+                    client.is_vip_customer = partner_is_customer;
+                });
+            }
+        }
+        return _super.prototype.set_client.apply(this, arguments);
+    },
     add_product: function(product, options){
         var result = _super.prototype.add_product.apply(this, arguments);
         if (product.id === this.pos.config.vip_prod_id[0]) {
@@ -143,7 +159,7 @@ models.Order = models.Order.extend({
         }
         if (this.get_client() && !this.get_client().is_vip_customer) {
             self = this;
-            var client = this.get_client()
+            var client = this.get_client();
             rpc.query({
                 model: 'res.partner',
                 method: 'set_vip_customer',
