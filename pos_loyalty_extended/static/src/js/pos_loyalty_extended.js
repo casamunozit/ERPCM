@@ -147,7 +147,7 @@ models.Order = models.Order.extend({
             rpc.query({
                 model: 'res.partner',
                 method: 'set_vip_customer',
-                args: [client.id],
+                args: [client.id, this.pricelist.id],
             }).then(function(partner_is_customer){
                 client.is_vip_customer = partner_is_customer;
                 self.set_client(client);
