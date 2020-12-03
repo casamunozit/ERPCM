@@ -81,6 +81,12 @@ screens.OrderWidget.include({
             this.getParent().action_buttons.loyalty.highlight(!!rewards.length);
         }
     },
+    remove_orderline: function(order_line){
+        if (order_line.product.id == this.pos.config.vip_prod_id[0]) {
+            order_line.order.set_pricelist(order_line.pos.default_pricelist);
+        }
+        this._super(order_line);
+    },
 });
 var _super = models.Order;
 models.Order = models.Order.extend({
@@ -155,7 +161,10 @@ models.Order = models.Order.extend({
         var result = _super.prototype.add_product.apply(this, arguments);
         if (product.id === this.pos.config.vip_prod_id[0]) {
             var pl_id = this.pos.config.vip_pricelist_id[0];
-            this.set_pricelist(_.find(this.pos.pricelists, function(pl){ return pl.id == pl_id}))
+            this.set_pricelist(_.find(this.pos.pricelists, function(pl){ return pl.id == pl_id}));
+            if (!this.get_client()) {
+                this.pos.gui.show_screen('clientlist');
+            }
         }
         if (this.get_client() && !this.get_client().is_vip_customer) {
             self = this;
