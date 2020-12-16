@@ -181,4 +181,12 @@ models.Order = models.Order.extend({
         return result;
     }
 });
+screens.ClientListScreenWidget.include({
+    display_client_details: function(visibility,partner,clickpos){
+        this._super(visibility,partner,clickpos);
+        if (visibility == 'edit'){
+            this.$('.client-details-contents').find('select[name="property_product_pricelist"]').prop('disabled', true);
+        }
+    },
+});
 });
