@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pos_config_view_form_inherit_pos_loyalty_extended" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit.pos_loyalty_extended</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="pos_loyalty.pos_config_view_form_inherit_pos_loyalty"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='loyalty_id']/.." position="after">
+                <div class="mt16">
+                    <label for="vip_prod_id" string="VIP Product"/>
+                    <field name="vip_prod_id"/>
+                </div>
+                <div class="mt16">
+                    <label for="vip_pricelist_id" string="VIP Pricelist"/>
+                    <field name="vip_pricelist_id" attrs="{'required': [('vip_prod_id', '!=', False)]}"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
